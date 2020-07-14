@@ -28,21 +28,18 @@ ARTICLES = [
 #########################
 
 def calculate_recipients
-  loyal = []
-  SUBSCRIBERS.each do |i|
-    loyal = i.merge(UNSUBSCRIBED)
-    loyal.uniq
+  loyal = SUBSCRIBERS | UNSUBSCRIBED
+  loyal.uniq
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
-  end
 end
 
 def first_n_articles(number_of_articles)
     ARTICLES.first(number_of_articles.to_i)
 end
 
-def print_recipients(calculate_recipients)
-  loyal.split(",")
+def print_recipients
+  binding.pry
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
