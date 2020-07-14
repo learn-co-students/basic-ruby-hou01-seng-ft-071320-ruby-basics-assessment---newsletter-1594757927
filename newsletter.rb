@@ -45,19 +45,13 @@ def first_n_articles(number_of_articles)
 end
 
 
-
 def print_recipients
-  # Write a method that uses the output of calculate_recipients
-  # and returns a list of emails separated by commas
-  # Ex) "abc@email.com, def@email.com, ghi@email.com"
   arr = calculate_recipients
   return arr.join(',')
 end
 
 def print_one_article(article)
-  # Write a method that will take an article hash
-  # and print the title, author and text as a formatted string
-  # See the README/sample output for examples
+  puts "by: #{article[1][:author]}\n"+ "#{article[1][:text]}"
 end
 
 def print_many_articles(articles)
