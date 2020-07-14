@@ -29,7 +29,7 @@ ARTICLES = [
 
 def calculate_recipients
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
-  # write a method that will return an array of only the subscribers who haven't unsubscribed
+  #because SUBSCRIBERS and UNSUBSCRIBED are constants and were giving me issues I assigned them to new arrays.
   subscribers = SUBSCRIBERS
   unsubscribed = UNSUBSCRIBED
   
@@ -50,7 +50,7 @@ end
 def print_one_article(article)
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
-  # See the README/sample output for examples
+  #used puts to print out items on new lines
   puts article[:"title"]
   puts "by: #{article[:"author"]}"
   puts article[:"text"]
@@ -60,6 +60,7 @@ end
 def print_many_articles(articles)
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
+  #iterates over each hash then prints using print_one_article method
   articles.each do |hash|
     print_one_article(hash)
   end
@@ -99,6 +100,7 @@ end
 def run
   # We want our program to print three articles by default,
   # but we can change that number here
+  #changed string value to integer
   print_newsletter(3)
 end
 
