@@ -51,12 +51,13 @@ def print_recipients
 end
 
 def print_one_article(article)
-  puts "by: #{article[1][:author]}\n"+ "#{article[1][:text]}"
+  puts "by: #{article[:author]}\n"+ "#{article[:text]}"
 end
 
 def print_many_articles(articles)
-  # Write a method that will take in an array of article hashes
-  # and format each one using the print_one_article method
+  articles.each{|value|
+  puts "by: #{value[:author]}\n"+ "#{value[:text]}"
+  }
 end
 
 def format_campus_location(campus)
