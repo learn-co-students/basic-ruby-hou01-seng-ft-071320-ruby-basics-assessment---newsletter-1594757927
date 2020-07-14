@@ -30,15 +30,14 @@ ARTICLES = [
 def calculate_recipients
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
-  arr = []
-  SUBSCRIBERS.select {|element|
-     UNSUBSCRIBED.each{|ele|
+  UNSUBSCRIBED.each{|ele|
+    SUBSCRIBERS.select {|element|
         if element == ele
-            arr.push(element)
+            SUBSCRIBERS.delete(element)
         end
   }
   }
-  return arr
+puts SUBSCRIBERS
 end
 
 def first_n_articles(number_of_articles)
