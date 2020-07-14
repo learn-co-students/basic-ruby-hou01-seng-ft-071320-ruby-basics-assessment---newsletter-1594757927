@@ -22,39 +22,66 @@ ARTICLES = [
   {"author": "Michale Bruen Boehm", "title": "Consulting", "text": "Everyone has an individual background. Someone may come from Python, someone else may come from Perl, and they may be surprised by different aspects of the language. Then they come up to me and say, 'I was surprised by this feature of the language, so therefore Ruby violates the principle of least surprise.' Wait. Wait. The principle of least surprise is not for you only."},
   {"author": "Tony Keeling Cartwright", "title": "Design", "text": "Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines."},
 ]
+number = ARTICLES.length
 
 #########################
 # Methods to generate the newsletter
 #########################
 
-def calculate_recipients
+def calculate_recipients(subscribers, unsubscribed)
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
+  only_subscribers = subscribers
+  subscribers.each do |email1|
+      unsubscribed.each do |email2|
+        if email1 == email2
+          only_subscribers.delete(email2)
+        end 
+    
+      end
+  end
+  only_subscribers
 end
 
-def first_n_articles(number_of_articles
-  ARTICLES.first(number_of_articles)
+def first_n_articles(number_of_articles)
+  ARTICLES.first(number_of_articles.to_i)
 end
 
 def print_recipients
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
+  only_subscribers = calculate_recipients(SUBSCRIBERS, UNSUBSCRIBED)
+  recipient_list = ""
+  only_subscribers.each do |email|
+    recipient_list = recipient_list + email + ", "
+  end
+  puts recipient_list.chop.chop
 end
 
 def print_one_article(article)
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
   # See the README/sample output for examples
+  puts article[:title]
+  puts "by: #{article[:author]}"
+  puts article[:text]
 end
 
 def print_many_articles(articles)
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
+  index = 0
+  while index < articles.length
+    print_one_article(articles[index])
+    puts ""
+    index += 1
+
+  end
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:name]}"
 end
 
 def format_subject
@@ -80,7 +107,7 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  end
+  
 end
 
 def run
@@ -92,3 +119,7 @@ end
 # When we run "ruby newsletter.rb" in the command line,
 # the 'run' method will be called because we're calling it below.
 run
+#calculate_recipients(SUBSCRIBERS, UNSUBSCRIBED)
+#print_recipients
+#print_one_article(ARTICLES[2])
+#print_many_articles(ARTICLES)
