@@ -70,14 +70,13 @@ def print_many_articles(articles)
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
   i = 0
-  while i < ARTICLES.length do  
-    if ARTICLES[i] == articles
-      puts ARTICLES[i][:title]
-      puts "by: " + ARTICLES[i][:author]
-      puts ARTICLES[i][:text]
-    end
-   i += 1
-  end
+  while i < articles.length do  
+    puts articles[i][:title]
+    puts "by: " + articles[i][:author]
+    puts articles[i][:text]
+    puts " "
+    i += 1
+  end 
 end
 
 def format_campus_location(campus)
@@ -107,9 +106,6 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  print_one_article(ARTICLES[0])
-
-  print_many_articles([ARTICLES[1],ARTICLES[2]])
 
 end
 
@@ -123,8 +119,6 @@ end
 # When we run "ruby newsletter.rb" in the command line,
 # the 'run' method will be called because we're calling it below.
 run
-
-#  binding.pry
 
 
 
